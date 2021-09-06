@@ -38,6 +38,7 @@ func TestHelm(t *testing.T) {
 		var expected map[string]interface{}
 		err = json.Unmarshal([]byte(`{
 			"config": {
+				"boolKey":false,
 				"key1": "value1 from values.yaml",
 				"key2": "value2 from values.yaml"
 			}
@@ -146,6 +147,10 @@ func TestHelm(t *testing.T) {
 				{
 					Key:   "config.key2",
 					Value: "value2 from component",
+				},
+				{
+					Key: "config.boolKey",
+					Value: "true",
 				},
 			}).
 			Build()
